@@ -3,13 +3,13 @@
   "position": "(EXEMPLO) Estágio em Gastronomia",
   "output_language": "pt-BR",
   "directories": {
-    "input": "input",
-    "extracted": "extracted",
-    "processed": "processed",
-    "analysis": "analysis",
-    "report": "report",
-    "log": "log",
-    "temp": "temp"
+    "input": "data/input",
+    "extracted": "data/extracted",
+    "processed": "data/processed",
+    "analysis": "data/analysis",
+    "report": "data/report",
+    "log": "data/log",
+    "temp": "data/temp"
   },
   "evaluation_criteria": {
     "technical_skills": {

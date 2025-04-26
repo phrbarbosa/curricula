@@ -11,16 +11,50 @@ use Curricula\Service\DirectoryService;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Dotenv\Dotenv;
 
+// Check if .env file exists
+if (!file_exists(__DIR__ . '/../.env')) {
+    echo "\033[31mError: .env file not found.\033[0m\n";
+    echo "Please create an .env file based on the .env.example file.\n";
+    echo "Run: cp .env.example .env and configure your settings.\n";
+    exit(1);
+}
+
 // Load environment variables
 $dotenv = new Dotenv();
 $dotenv->load(__DIR__ . '/../.env');
+
+// Validate required environment variables
+$requiredVars = [
+    'AWS_ACCESS_KEY',
+    'AWS_SECRET_KEY',
+    'AWS_REGION',
+    'AWS_VERSION',
+    'AWS_MODEL_ID'
+];
+
+$missingVars = [];
+foreach ($requiredVars as $var) {
+    if (!isset($_ENV[$var]) || empty($_ENV[$var])) {
+        $missingVars[] = $var;
+    }
+}
+
+if (!empty($missingVars)) {
+    echo "\033[31mError: Missing required environment variables:\033[0m\n";
+    foreach ($missingVars as $var) {
+        echo "- $var\n";
+    }
+    echo "Please check your .env file and ensure all required variables are set.\n";
+    echo "Use .env.example as a reference for the required configuration.\n";
+    exit(1);
+}
 
 // Create directory service and ensure directories exist
 $directoryService = new DirectoryService();
 $directoryService->ensureDirectoriesExist();
 
 // Create the application
-$application = new Application('Curricula - CV Analysis Tool', '1.0.0');
+$application = new Application('Curricula - CV Analysis Tool', '0.0.1');
 
 // Register commands
 $application->add(new ExtractCommand());
