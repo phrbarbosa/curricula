@@ -1,7 +1,29 @@
 {
-  "job_description": "(EXEMPLO) Restaurante Sabor & Arte - Valorizando a gastronomia local e proporcionando experiências culinárias inesquecíveis. Por que o Sabor & Arte? No Restaurante Sabor & Arte, cada colaborador contribui diretamente para a experiência do cliente. Trabalhamos com paixão pela gastronomia, atenção aos detalhes e um ambiente colaborativo que valoriza a criatividade. Nossa meta é ser referência regional em gastronomia contemporânea, com reconhecimento pela excelência no atendimento e qualidade dos pratos. Nossos pilares Qualidade e frescor dos ingredientes; Experiência do cliente; Inovação culinária; Trabalho em equipe. O desafio Como estagiário(a) de Gastronomia, você vai vivenciar a rotina de uma cozinha profissional, colaborando na criação de novos pratos, preparação de alimentos e aprendendo técnicas culinárias avançadas. Principais responsabilidades Auxiliar na preparação de pratos sob orientação do chef. Organizar e higienizar alimentos e utensílios de cozinha. Contribuir com ideias para o menu sazonal. Participar do controle de estoque e pedidos de insumos. O que buscamos Criatividade e paixão pela gastronomia. Organização e capacidade de trabalhar sob pressão. Perfil colaborativo e orientado ao cliente. Requisitos Graduação em andamento em Gastronomia, Nutrição ou cursos técnicos na área. Conhecimentos básicos de técnicas culinárias e higiene alimentar. Diferenciais que brilham os olhos Experiência prévia em restaurantes ou eventos gastronômicos. O que oferecemos Bolsa‑estágio: R$ 1.800,00 Carga horária: 30 h/semanais (escala 6x1) Refeição no local Vale-transporte Possibilidade de efetivação Como se candidatar Envie seu currículo para vagas@saborearte.com.br Se quiser, inclua fotos de pratos que você já preparou. Venha fazer parte da nossa equipe e transformar ingredientes em arte!",
-  "position": "(EXEMPLO) Estágio em Gastronomia",
-  "output_language": "pt-BR",
+  "job_description": "Example Company - A leading tech firm specializing in innovative solutions. About Example Company: We create cutting-edge software that transforms how businesses operate. Our collaborative environment encourages creativity and professional growth. The Role: As a Full-Stack Developer, you'll work on all aspects of our web applications, from database design to user interface implementation. Key Responsibilities: Develop and maintain web applications using modern frameworks. Collaborate with UX/UI designers to implement responsive interfaces. Write clean, maintainable, and well-tested code. Participate in code reviews and technical discussions. What We're Looking For: Strong problem-solving skills and attention to detail. Ability to work independently and as part of a team. Requirements: Bachelor's degree in Computer Science or related field. Experience with JavaScript, TypeScript, React, and Node.js. Knowledge of SQL and NoSQL databases. Bonus Points: Experience with cloud platforms (AWS, Azure, GCP). What We Offer: Competitive salary: $90,000-$120,000 depending on experience. Flexible working hours and remote options. Health insurance and 401(k) matching. Professional development opportunities. How to Apply: Send your resume to careers@example.com. Include links to your GitHub profile or portfolio.",
+  "position": "Full-Stack Developer",
+  "output_language": "en-US",
+  "evaluation_criteria": {
+    "technical_skills": {
+      "weight": 0.35,
+      "description": "Evaluate technical knowledge of JavaScript, TypeScript, React, Node.js, and database systems. Consider familiarity with modern development practices and tools."
+    },
+    "experience": {
+      "weight": 0.25,
+      "description": "Consider previous experience developing full-stack applications. Assess complexity of past projects and responsibilities in previous roles."
+    },
+    "problem_solving": {
+      "weight": 0.20,
+      "description": "Evaluate analytical thinking and approach to technical challenges. Look for evidence of innovative solutions and debugging skills."
+    },
+    "education": {
+      "weight": 0.10,
+      "description": "Assess formal education in Computer Science or related fields, as well as relevant certifications and continuing education."
+    },
+    "communication": {
+      "weight": 0.10,
+      "description": "Evaluate ability to communicate technical concepts clearly. Consider experience working in teams and collaborating with non-technical stakeholders."
+    }
+  },
   "directories": {
     "input": "data/input",
     "extracted": "data/extracted",
@@ -10,27 +32,5 @@
     "report": "data/report",
     "log": "data/log",
     "temp": "data/temp"
-  },
-  "evaluation_criteria": {
-    "technical_skills": {
-      "weight": 0.30,
-      "description": "Considerar conhecimento de técnicas culinárias básicas, higiene alimentar e manipulação de alimentos obtidos em cursos ou experiências anteriores."
-    },
-    "experience": {
-      "weight": 0.25,
-      "description": "Avaliar experiência prévia em cozinhas, mesmo que não profissionais. Considerar participação em eventos gastronômicos, cursos extras ou projetos pessoais relacionados à culinária."
-    },
-    "culture_fit": {
-      "weight": 0.20,
-      "description": "Avaliar alinhamento com os valores do Restaurante Sabor & Arte (qualidade, experiência do cliente, inovação culinária, trabalho em equipe). Buscar candidatos apaixonados por gastronomia, criativos, organizados e com boa capacidade de trabalhar sob pressão."
-    },
-    "education": {
-      "weight": 0.15,
-      "description": "Avaliar se está cursando Gastronomia, Nutrição ou cursos técnicos relacionados à área de alimentos."
-    },
-    "availability": {
-      "weight": 0.10,
-      "description": "Avaliar disponibilidade para trabalhar em horários noturnos, fins de semana e feriados, conforme escala do restaurante."
-    }
   }
 }

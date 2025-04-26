@@ -1,6 +1,35 @@
-vendor
-data
+# Dependencies
+vendor/
+composer.phar
+
+# Data directories
+data/
+!data/.gitkeep
+
+# Environment files
 .env
-.idea
-.vscode
-temp
+.env.backup
+.env.local
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+.phpstorm.meta.php
+_ide_helper.php
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+*.swp
+*.swo
+
+# Logs
+*.log

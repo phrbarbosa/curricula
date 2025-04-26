@@ -1,151 +1,160 @@
-# Curricula - CV Analysis Pipeline
+# Curricula 📄🔍
 
-This pipeline processes resumes in PDF and DOCX formats using AWS Bedrock and Claude to analyze and score candidates based on job requirements.
+A resume analysis pipeline using PHP and AI for efficient candidate screening based on customizable criteria.
 
-## Structure
-- `input/` - Place PDF and DOCX files here
-- `extracted/` - Contains text extracted from documents
-- `processed/` - Contains standardized resumes
-- `analysis/` - Contains individual analyses
-- `report/` - Contains the final CSV report
-- `log/` - Error and warning logs
-  - `log/extract/` - Logs from the extraction step
-  - `log/process/` - Logs from the standardization step
-  - `log/analyze/` - Logs from the analysis step
-- `config/` - Configuration files
-- `src/` - Source code
-- `bin/` - Executable scripts
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![PHP Version](https://img.shields.io/badge/php-%3E%3D%208.0-8892BF.svg)](https://www.php.net/)
 
-## Requirements
+## 🔍 Overview
+
+Curricula is an open source solution for processing, standardizing, and analyzing resumes using AWS Bedrock and Claude. The project enables automated screening of resumes in PDF and DOCX formats, scoring candidates based on customizable criteria for specific job positions.
+
+### 🌟 Key Features
+
+- **Complete Processing**: Text extraction from PDFs and DOCXs, including OCR fallback
+- **Intelligent Standardization**: Reorganization of content into consistent Markdown format
+- **AI Analysis**: Candidate evaluation using customizable weighted criteria
+- **Detailed Reports**: Generation of individual reports and consolidated CSV
+- **Modular and Flexible**: Use the complete pipeline or just specific steps
+- **Robust**: Error handling and detailed logs at each step
+
+## ⚙️ Requirements
+
 - PHP 8.0+
-- AWS SDK for PHP
 - Composer
-- PDF and DOCX processing libraries
+- AWS account with Bedrock access
+- Dependencies:
+  - AWS SDK for PHP
+  - PDF and DOCX processing libraries
+  - Tesseract OCR (optional, for problematic PDFs)
 
-## Configuration
-1. Install dependencies: `composer install`
-2. Copy the `.env.example` file to `.env` and configure your AWS credentials:
-   ```bash
-   cp .env.example .env
-   ```
-3. Configure job requirements in `config/job-requirements.json`:
-   - Define the job description and criteria
-   - Configure the output language in `output_language` ("pt-BR", "en-US", etc)
-   - Configure working directories in the `directories` section
+## 🚀 Installation
 
-## Usage
+1. Clone the repository:
+```bash
+git clone https://github.com/phrbarbosa/curricula.git
+cd curricula
+```
 
-The system can be run in three separate steps or all at once:
+2. Install dependencies:
+```bash
+composer install
+```
 
-### Run all steps
+3. Configure your AWS credentials:
+```bash
+cp .env.example .env
+```
+Edit the `.env` file with your AWS credentials and model settings.
+
+4. Create the necessary folders (or use the `php bin/console cv:setup` command if available):
+```bash
+mkdir -p data/{input,extracted,processed,analysis,report,log/{extract,process,analyze},temp}
+```
+
+## 📋 Configuration
+
+1. Place PDF/DOCX resumes in the `data/input/` folder
+
+2. Configure job requirements in `config/job-requirements.json`:
+   - Job description and position
+   - Evaluation criteria with weights
+   - Output language
+   - Working directories
+
+Configuration example:
+```json
+{
+  "job_description": "Complete job description...",
+  "position": "Full-Stack Developer",
+  "output_language": "en-US",
+  "evaluation_criteria": {
+    "technical_skills": {
+      "weight": 0.35,
+      "description": "Evaluate technical knowledge..."
+    },
+    "experience": {
+      "weight": 0.25,
+      "description": "Consider previous experience..."
+    },
+    ...
+  }
+}
+```
+
+## 🔧 Usage
+
+### Complete Pipeline
+
 ```bash
 php bin/console cv:run-all
 ```
 
-You can also specify a custom requirements file:
+Options:
+- `--force`: Reprocess already processed files
+- `--job-requirements=path/file.json`: Use custom requirements file
+
+### Individual Commands
+
+#### 1. Text Extraction
+
 ```bash
-php bin/console cv:run-all --job-requirements=path/to/requirements.json
+php bin/console cv:extract [--force]
 ```
 
-To force reprocessing of already processed files:
+#### 2. Resume Standardization
+
 ```bash
-php bin/console cv:run-all --force
+php bin/console cv:process [file.txt] [--force]
 ```
 
-### Run individual steps
+#### 3. Resume Analysis
 
-1. Extract text from documents:
 ```bash
-php bin/console cv:extract
-# Or force re-extraction of all files:
-php bin/console cv:extract --force
-```
-
-2. Standardize resumes:
-```bash
-php bin/console cv:process
-# Or process a specific file:
-php bin/console cv:process file.txt
-# Or force reprocessing:
-php bin/console cv:process --force
-```
-
-3. Analyze resumes:
-```bash
-php bin/console cv:analyze
-# Or analyze a specific file:
-php bin/console cv:analyze file_standardized.txt
-# Or force reanalysis:
-php bin/console cv:analyze --force
+php bin/console cv:analyze [standardized_file.txt] [--force]
 ```
 
 ### Help
-To see all available commands:
+
 ```bash
-php bin/console
+php bin/console help [command]
 ```
 
-To see help for a specific command:
-```bash
-php bin/console help cv:extract
+## 📊 Results
+
+- **Extracted Texts**: Saved in `data/extracted/`
+- **Standardized Resumes**: Saved in `data/processed/` with suffix `_standardized.txt`
+- **Individual Analyses**: Saved in `data/analysis/` with suffix `_analysis.txt`
+- **CSV Report**: Generated in `data/report/consolidated_analysis_DATE.csv`
+- **Logs**: Errors and warnings are recorded in `data/log/`
+
+## 🧩 Project Structure
+
+```
+├── bin/                # Executable scripts
+├── config/             # Configuration files
+├── data/               # Working directories
+│   ├── input/          # Original resumes (PDF/DOCX)
+│   ├── extracted/      # Extracted texts
+│   ├── processed/      # Standardized resumes
+│   ├── analysis/       # Individual analyses
+│   ├── report/         # Consolidated reports
+│   ├── log/            # Error logs
+│   └── temp/           # Temporary files
+├── src/                # Source code
+│   ├── Command/        # Symfony Console commands
+│   └── Service/        # Services and business logic
+└── vendor/             # Dependencies (via Composer)
 ```
 
-## Results
-- **Extraction**: 
-  - Extracted text files are saved in `extracted/`
-  - Empty or error resumes are logged in `log/extract/errors_DATE.log`
-
-- **Processing**: 
-  - Standardized resumes are saved in `processed/` with suffix `_standardized.txt`
-  - Standardization errors are logged in `log/process/errors_DATE.log`
-
-- **Analysis**: 
-  - Individual analyses are saved in `analysis/` with suffix `_analysis.txt`
-  - The final CSV report is generated in `report/consolidated_analysis_DATE.csv` with semicolon separators and ANSI encoding
-  - Analysis errors are logged in `log/analyze/errors_DATE.log`
-
-## Error Handling
-The system has robust error handling at each stage:
-
-1. **Extraction**:
-   - Files that cannot be read
-   - Corrupted PDFs or memory issues
-   - Documents without extractable text
-   - Errors are logged and the file doesn't advance to the next stage
-   - Automatic attempt to use OCR as a fallback for problematic PDFs
-
-2. **Processing**:
-   - Empty text files
-   - Standardization failures
-   - Communication errors with the model
-   - Files with errors don't advance to analysis
-
-3. **Analysis**:
-   - Poorly formatted resumes
-   - Model analysis failures
-   - Invalid or incomplete data
-   - Each analysis is saved to CSV immediately after completion
-
-All errors are logged with timestamps in the corresponding log files, allowing tracking and diagnosis.
-
-## Customization
+## 🛠️ Customization
 
 ### Directories
-The directories used by the system are configured in the `config/job-requirements.json` file in the `directories` section:
 
-```json
-"directories": {
-  "input": "input",
-  "extracted": "extracted",
-  "processed": "processed",
-  "analysis": "analysis",
-  "report": "report",
-  "log": "log",
-  "temp": "temp"
-}
-```
+The directories used by the system can be configured in the `directories` section of the `config/job-requirements.json` file.
 
 ### AWS Configuration
+
 AWS credentials and settings are defined in the `.env` file:
 
 ```
@@ -155,9 +164,32 @@ AWS_REGION=us-east-1
 AWS_MODEL_ID=anthropic.claude-3-5-sonnet-20240620-v1:0
 ```
 
-## Additional Features
+## 🤝 Contributing
 
-- **Skip Existing Files**: By default, the system skips files that have already been processed in previous steps. Use the `--force` option to reprocess.
-- **Memory Handling**: System implements special handling for PDFs that cause memory errors.
-- **Incremental CSV**: Each analysis is saved to CSV immediately, preventing data loss in case of failure.
-- **CSV Format**: The CSV report uses semicolon separators (;) and ANSI encoding for better compatibility with Excel.
+Contributions are welcome! Feel free to submit pull requests, create issues, or suggest improvements.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/MyFeature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/MyFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## 👤 Author
+
+**Pedro Rosa**
+
+- GitHub: [@phrbarbosa](https://github.com/phrbarbosa)
+
+## 📚 Use Cases
+
+- **Recruitment**: Initial screening of candidates for positions with high volume of resumes
+- **Education**: Analysis and classification of academic profiles
+- **Research**: Structured extraction of information from professional documents
+
+## 🙏 Acknowledgments
+
+Special thanks to everyone who contributed to this project through code, documentation, or feedback.
