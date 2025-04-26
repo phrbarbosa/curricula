@@ -47,7 +47,7 @@ cp .env.example .env
 ```
 Edit the `.env` file with your AWS credentials and model settings.
 
-4. Create the necessary folders (or use the `php bin/console cv:setup` command if available):
+4. Create the necessary folders:
 ```bash
 mkdir -p data/{input,extracted,processed,analysis,report,log/{extract,process,analyze},temp}
 ```
@@ -180,9 +180,10 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 👤 Author
 
-**Pedro Rosa**
+**Pedro Henrique Rosa**
 
 - GitHub: [@phrbarbosa](https://github.com/phrbarbosa)
+- LinkedIn: [Pedro Henrique Rosa](https://www.linkedin.com/in/phrbarbosa/)
 
 ## 📚 Use Cases
 
