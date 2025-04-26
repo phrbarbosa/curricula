@@ -1,0 +1,36 @@
+{
+  "job_description": "(EXEMPLO) Restaurante Sabor & Arte - Valorizando a gastronomia local e proporcionando experiências culinárias inesquecíveis. Por que o Sabor & Arte? No Restaurante Sabor & Arte, cada colaborador contribui diretamente para a experiência do cliente. Trabalhamos com paixão pela gastronomia, atenção aos detalhes e um ambiente colaborativo que valoriza a criatividade. Nossa meta é ser referência regional em gastronomia contemporânea, com reconhecimento pela excelência no atendimento e qualidade dos pratos. Nossos pilares Qualidade e frescor dos ingredientes; Experiência do cliente; Inovação culinária; Trabalho em equipe. O desafio Como estagiário(a) de Gastronomia, você vai vivenciar a rotina de uma cozinha profissional, colaborando na criação de novos pratos, preparação de alimentos e aprendendo técnicas culinárias avançadas. Principais responsabilidades Auxiliar na preparação de pratos sob orientação do chef. Organizar e higienizar alimentos e utensílios de cozinha. Contribuir com ideias para o menu sazonal. Participar do controle de estoque e pedidos de insumos. O que buscamos Criatividade e paixão pela gastronomia. Organização e capacidade de trabalhar sob pressão. Perfil colaborativo e orientado ao cliente. Requisitos Graduação em andamento em Gastronomia, Nutrição ou cursos técnicos na área. Conhecimentos básicos de técnicas culinárias e higiene alimentar. Diferenciais que brilham os olhos Experiência prévia em restaurantes ou eventos gastronômicos. O que oferecemos Bolsa‑estágio: R$ 1.800,00 Carga horária: 30 h/semanais (escala 6x1) Refeição no local Vale-transporte Possibilidade de efetivação Como se candidatar Envie seu currículo para vagas@saborearte.com.br Se quiser, inclua fotos de pratos que você já preparou. Venha fazer parte da nossa equipe e transformar ingredientes em arte!",
+  "position": "(EXEMPLO) Estágio em Gastronomia",
+  "output_language": "pt-BR",
+  "directories": {
+    "input": "input",
+    "extracted": "extracted",
+    "processed": "processed",
+    "analysis": "analysis",
+    "report": "report",
+    "log": "log",
+    "temp": "temp"
+  },
+  "evaluation_criteria": {
+    "technical_skills": {
+      "weight": 0.30,
+      "description": "Considerar conhecimento de técnicas culinárias básicas, higiene alimentar e manipulação de alimentos obtidos em cursos ou experiências anteriores."
+    },
+    "experience": {
+      "weight": 0.25,
+      "description": "Avaliar experiência prévia em cozinhas, mesmo que não profissionais. Considerar participação em eventos gastronômicos, cursos extras ou projetos pessoais relacionados à culinária."
+    },
+    "culture_fit": {
+      "weight": 0.20,
+      "description": "Avaliar alinhamento com os valores do Restaurante Sabor & Arte (qualidade, experiência do cliente, inovação culinária, trabalho em equipe). Buscar candidatos apaixonados por gastronomia, criativos, organizados e com boa capacidade de trabalhar sob pressão."
+    },
+    "education": {
+      "weight": 0.15,
+      "description": "Avaliar se está cursando Gastronomia, Nutrição ou cursos técnicos relacionados à área de alimentos."
+    },
+    "availability": {
+      "weight": 0.10,
+      "description": "Avaliar disponibilidade para trabalhar em horários noturnos, fins de semana e feriados, conforme escala do restaurante."
+    }
+  }
+}

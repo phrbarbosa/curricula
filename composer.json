@@ -1,0 +1,17 @@
+{
+    "require": {
+        "aws/aws-sdk-php": "^3.0",
+        "smalot/pdfparser": "^2.0",
+        "phpoffice/phpword": "^1.0",
+        "guzzlehttp/guzzle": "^7.0",
+        "league/csv": "^9.0",
+        "thiagoalessio/tesseract_ocr": "^2.13",
+        "symfony/console": "^7.2",
+        "symfony/dotenv": "^7.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Curricula\\": "src/"
+        }
+    }
+}

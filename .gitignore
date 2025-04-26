@@ -1,0 +1,11 @@
+vendor
+input
+extracted
+processed
+report
+log
+analysis
+.env
+.idea
+.vscode
+temp

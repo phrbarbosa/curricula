@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Curricula\Command\ExtractCommand;
+use Curricula\Command\ProcessCommand;
+use Curricula\Command\AnalyzeCommand;
+use Curricula\Command\RunAllCommand;
+use Curricula\Service\DirectoryService;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Dotenv\Dotenv;
+
+// Load environment variables
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__ . '/../.env');
+
+// Create directory service and ensure directories exist
+$directoryService = new DirectoryService();
+$directoryService->ensureDirectoriesExist();
+
+// Create the application
+$application = new Application('Curricula - CV Analysis Tool', '1.0.0');
+
+// Register commands
+$application->add(new ExtractCommand());
+$application->add(new ProcessCommand());
+$application->add(new AnalyzeCommand());
+$application->add(new RunAllCommand());
+
+// Run the application
+$application->run();
